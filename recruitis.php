@@ -56,7 +56,7 @@
 		} */
     //}
     
-    $message = htmlspecialchars($_POST['fields']['message']['value']);
+    //$message = htmlspecialchars($_POST['fields']['message']['value']);
     // Zaznamenej dnesni datum k GDPR souhlasu
     //if (isset($_POST['fields']['field_ff334f7']['value'])) {
     //	date_default_timezone_set('Europe/Prague');
@@ -65,8 +65,8 @@
 
     $today = date('Y-m-d h:i:s');
 
-    $linkedinUrl = $_POST['fields']['field_bb883f3']['value'];
-    if( $linkedinUrl != "" ) {
+    //$linkedinUrl = $_POST['fields']['field_bb883f3']['value'];
+    /* if( $linkedinUrl != "" ) {
 	    $last = explode("/", $linkedinUrl, 3);
 		if(isset($last[2])) { 
 			if ( $last[2] == "") {
@@ -78,11 +78,11 @@
 			$linkedinUrl = "";
 			$note .= "Uchazeč zadal neplatnou adresu Linkedin profilu. Nebylo naimportováno.";
 		}
-	}
+	} */
 	//else { echo "empty linkedin "; }
 
-	print_r($note);
-
+	//print_r($note);
+	/*
     $data = [
     'job_id' => $_POST['fields']['field_a6e5050']['value'],
     'source_id' => 2161, // eMan kariérní stránky
@@ -109,7 +109,35 @@
     	),
     'attachments' => $newArray
     ];
-    
+    */
+
+    $data = [
+    'job_id' => 417033,
+    'source_id' => 2161, // eMan kariérní stránky
+    'name' => "Test Uchazece",
+    'email' => "test@test.cz",
+    'phone' => "+420700100101",
+    'linkedin' => "",
+    'extra' => 
+    	[
+    		Array
+    		(
+    		'note' => $note
+    		),
+    		Array
+    		(
+    		'tag' => "Import z eMan stránek poznámky."
+    		)
+    	],
+    'cover_letter' => "Test importu",
+    'gdpr_agreement' =>
+    	Array
+    	(
+    	'date_created' => $today
+    	),
+    'attachments' => $newArray
+    ];
+
 //}
 
 //echo "<br>";
