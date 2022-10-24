@@ -118,7 +118,7 @@ $postdata = json_encode($data);
 //echo "<br>";
 //echo '<pre>'; print_r($data); echo '</pre>';
 
-/*$ch = curl_init();
+$ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, "https://app.recruitis.io/api2/answers");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt($ch, CURLOPT_HEADER, FALSE);
@@ -143,6 +143,6 @@ if ($response === FALSE) {
 }
 else {
     echo $response;
-}*/
+}
 
 ?>
