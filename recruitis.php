@@ -58,10 +58,12 @@
     
     $message = htmlspecialchars($_POST['fields']['message']['value']);
     // Zaznamenej dnesni datum k GDPR souhlasu
-    if (isset($_POST['fields']['field_ff334f7']['value'])) {
-    	date_default_timezone_set('Europe/Prague');
-    	$today = date('Y-m-d h:i:s');
-    }
+    //if (isset($_POST['fields']['field_ff334f7']['value'])) {
+    //	date_default_timezone_set('Europe/Prague');
+    //	$today = date('Y-m-d h:i:s');
+    //}
+
+    $today = date('Y-m-d h:i:s');
 
     $linkedinUrl = $_POST['fields']['field_bb883f3']['value'];
     if( $linkedinUrl != "" ) {
@@ -110,13 +112,13 @@
     
 //}
 
-echo "<br>";
+//echo "<br>";
 $postdata = json_encode($data);
-echo $postdata;
-echo "<br>";
-echo '<pre>'; print_r($data); echo '</pre>';
+//echo $postdata;
+//echo "<br>";
+//echo '<pre>'; print_r($data); echo '</pre>';
 
-$ch = curl_init();
+/*$ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, "https://app.recruitis.io/api2/answers");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt($ch, CURLOPT_HEADER, FALSE);
@@ -141,6 +143,6 @@ if ($response === FALSE) {
 }
 else {
     echo $response;
-}
+}*/
 
 ?>
