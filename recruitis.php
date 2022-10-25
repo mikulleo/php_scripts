@@ -109,9 +109,9 @@
     ];
     */
 
-//add_action( 'elementor_pro/forms/new_record',  'send_data_using_webhook' , 10, 2 );
+add_action( 'elementor_pro/forms/new_record',  'send_data_using_webhook' , 10, 2 );
     
-//function send_data_using_webhook( $record , $handler ) {
+function send_data_using_webhook( $record , $handler ) {
 
     $data = [
     'job_id' => 417033,
@@ -158,7 +158,7 @@
 
 $response = wp_remote_post( $endpoint, $options );
 
-//}
+}
 
 //echo "<br>";
 //$postdata = json_encode($data);
