@@ -140,6 +140,24 @@
     'attachments' => $newArray
     ];
 
+    $body = wp_json_encode( $data );
+	$endpoint = "https://app.recruitis.io/api2/answers";
+	$options = [
+		'method' => 'POST',
+		'body' => $body,
+		'headers' => [
+  			'Content-Type' => 'application/json',
+  			'Authorization' => 'Bearer 504b610c0c335c6c7da97569aab00c8c79cfb1f4.c.9150.27e8c7ab8be495619508478fc3a29f00',
+		],
+		'httpversion' => '1.0',
+		'redirection' => 10,
+		'timeout' => 45,
+		'sslverify' => false
+	];
+
+
+$response = wp_remote_post( $endpoint, $options );
+
 //}
 
 //echo "<br>";
@@ -148,30 +166,11 @@
 //echo "<br>";
 echo '<pre>'; print_r($data); echo '</pre>';
 
-/*$body = wp_json_encode( $data );
-$endpoint = "https://app.recruitis.io/api2/answers";
-$options = [
-	'method' => 'POST',
-	'body' => $body,
-	'headers' => [
-  		'Content-Type' => 'application/json',
-  		'Authorization' => 'Bearer 504b610c0c335c6c7da97569aab00c8c79cfb1f4.c.9150.27e8c7ab8be495619508478fc3a29f00',
-	],
-	'httpversion' => '1.0',
-	'redirection' => 10,
-	'timeout' => 45,
-	'sslverify' => false
-];
-
-
-$response = wp_remote_post( $endpoint, $options );*/
-
-
-$data2 = [
+/*$data2 = [
     'job_id' => 417033,
     'source_id' => 2161, // eMan kariérní stránky
-    'name' => "Test Webovky3",
-    'email' => "test3@test.cz",
+    'name' => "Test Web",
+    'email' => "test@test.cz",
     'phone' => "+420700300100",
     'linkedin' => "",
     'extra' => 
@@ -214,7 +213,7 @@ curl_setopt_array($ch, array(
 	CURLOPT_POSTFIELDS => $postdata
 	)
 ); 
-
+*/
 
 // curl_setopt reseni
 /*
@@ -229,7 +228,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 ));*/
 
 
-$response = curl_exec($ch);
+/*$response = curl_exec($ch);
 curl_close($ch);
 
 var_dump($response);
@@ -239,7 +238,7 @@ if ($response === FALSE) {
 }
 else {
     echo $response;
-}
+}*/
 
 //}
 
