@@ -143,7 +143,7 @@
 //}
 
 //echo "<br>";
-$postdata = json_encode($data);
+//$postdata = json_encode($data);
 //echo $postdata;
 //echo "<br>";
 echo '<pre>'; print_r($data); echo '</pre>';
@@ -158,12 +158,45 @@ $options = [
   		'Authorization' => 'Bearer 504b610c0c335c6c7da97569aab00c8c79cfb1f4.c.9150.27e8c7ab8be495619508478fc3a29f00',
 	],
 	'httpversion' => '1.0',
+	'redirection' => 10,
+	'timeout' => 45,
 	'sslverify' => false
-]*/
+];
 
 
-//$response = wp_remote_post( $endpoint, $options );
+$response = wp_remote_post( $endpoint, $options );*/
 
+
+$data2 = [
+    'job_id' => 417033,
+    'source_id' => 2161, // eMan kariérní stránky
+    'name' => "Test Webovky3",
+    'email' => "test3@test.cz",
+    'phone' => "+420700300100",
+    'linkedin' => "",
+    'extra' => 
+    	[
+    		Array
+    		(
+    		'note' => $note
+    		),
+    		Array
+    		(
+    		'tag' => "Import z eMan stránek poznámky."
+    		)
+    	],
+    'cover_letter' => "Test importu",
+    'gdpr_agreement' =>
+    	Array
+    	(
+    	'date_created' => $today
+    	),
+    'attachments' => $newArray
+    ];
+
+$postdata = json_encode($data2);
+
+// Reseni dle orig crm.php souboru
 $ch = curl_init();
 curl_setopt_array($ch, array(
 	CURLOPT_URL => 'https://app.recruitis.io/api2/answers',
@@ -180,8 +213,10 @@ curl_setopt_array($ch, array(
 		),
 	CURLOPT_POSTFIELDS => $postdata
 	)
-);
+); 
 
+
+// curl_setopt reseni
 /*
 curl_setopt($ch, CURLOPT_URL, "https://app.recruitis.io/api2/answers");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -207,3 +242,5 @@ else {
 }
 
 //}
+
+?>
