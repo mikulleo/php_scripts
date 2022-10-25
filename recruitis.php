@@ -1,7 +1,7 @@
 <?php
 
-@ini_set( 'upload_max_size' , '64M' );
-@ini_set( 'post_max_size', '64M');
+//@ini_set( 'upload_max_size' , '64M' );
+//@ini_set( 'post_max_size', '64M');
 
 //if (isset($_POST['submit'])) {
 
@@ -111,10 +111,14 @@
     ];
     */
 
+//add_action( 'elementor_pro/forms/new_record',  'send_data_using_webhook' , 10, 2 );
+    
+//function send_data_using_webhook( $record , $handler ) {
+
     $data = [
     'job_id' => 417033,
     'source_id' => 2161, // eMan kariérní stránky
-    'name' => "Test Uchazece",
+    'name' => "Test Webovky,
     'email' => "test@test.cz",
     'phone' => "+420700100101",
     'linkedin' => "",
@@ -144,9 +148,43 @@
 $postdata = json_encode($data);
 //echo $postdata;
 //echo "<br>";
-//echo '<pre>'; print_r($data); echo '</pre>';
+echo '<pre>'; print_r($data); echo '</pre>';
+
+/*$body = wp_json_encode( $data );
+$endpoint = "https://app.recruitis.io/api2/answers";
+$options = [
+	'method' => 'POST',
+	'body' => $body,
+	'headers' => [
+  		'Content-Type' => 'application/json',
+  		'Authorization' => 'Bearer 504b610c0c335c6c7da97569aab00c8c79cfb1f4.c.9150.27e8c7ab8be495619508478fc3a29f00',
+	],
+	'httpversion' => '1.0',
+	'sslverify' => false
+]*/
+
+
+//$response = wp_remote_post( $endpoint, $options );
 
 $ch = curl_init();
+curl_setopt_array($ch, array(
+	CURLOPT_URL => 'https://app.recruitis.io/api2/answers',
+	CURLOPT_RETURNTRANSFER => true,
+	CURLOPT_ENCODING => '',
+	CURLOPT_MAXREDIRS => 10,
+	CURLOPT_TIMEOUT => 0,
+	CURLOPT_FOLLOWLOCATION => true,
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	CURLOPT_CUSTOMREQUEST => 'POST',
+	CURLOPT_HTTPHEADER => array(
+  	"Content-Type: application/json",
+  	"Authorization: Bearer 504b610c0c335c6c7da97569aab00c8c79cfb1f4.c.9150.27e8c7ab8be495619508478fc3a29f00"
+		),
+	CURLOPT_POSTFIELDS => $postdata
+	)
+);
+
+/*
 curl_setopt($ch, CURLOPT_URL, "https://app.recruitis.io/api2/answers");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt($ch, CURLOPT_HEADER, FALSE);
@@ -158,7 +196,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS,$postdata);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
   "Content-Type: application/json",
   "Authorization: Bearer 504b610c0c335c6c7da97569aab00c8c79cfb1f4.c.9150.27e8c7ab8be495619508478fc3a29f00"
-));
+));*/
 
 
 $response = curl_exec($ch);
@@ -172,5 +210,7 @@ if ($response === FALSE) {
 else {
     echo $response;
 }
+
+//}
 
 ?>
