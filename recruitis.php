@@ -1,32 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@mikulleo 
-mikulleo
-/
-php_scripts
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-php_scripts/recruitis.php /
-@mikulleo
-mikulleo Add files via upload
-Latest commit 62cb7c7 4 minutes ago
- History
- 1 contributor
-216 lines (184 sloc)  5.55 KB
-
 <?php
 
 //@ini_set( 'upload_max_size' , '64M' );
