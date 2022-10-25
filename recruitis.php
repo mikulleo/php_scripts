@@ -1,3 +1,32 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@mikulleo 
+mikulleo
+/
+php_scripts
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+php_scripts/recruitis.php /
+@mikulleo
+mikulleo Add files via upload
+Latest commit 62cb7c7 4 minutes ago
+ History
+ 1 contributor
+216 lines (184 sloc)  5.55 KB
+
 <?php
 
 //@ini_set( 'upload_max_size' , '64M' );
@@ -35,11 +64,9 @@
 					$note .= "Vložená příloha je větší než 3MB - bylo odesláno pouze na eMan email.";
 					break;
 				}
-
 				$data_from_file = file_get_contents($fileTmpPath);
     			$base64_string = base64_encode($data_from_file);
     			echo $base64_string;
-
     			$fileName = str_replace(' ', '_', $fileName); // Recruitis požaduje název bez mezer
 				$newArray[] = Array (
 				//'path' => $fileTmpPath."/".$fileName,
@@ -118,9 +145,9 @@
     $data = [
     'job_id' => 417033,
     'source_id' => 2161, // eMan kariérní stránky
-    'name' => "Test Webovky,
-    'email' => "test@test.cz",
-    'phone' => "+420700100101",
+    'name' => "Test Webovky2",
+    'email' => "test1@test.cz",
+    'phone' => "+420700100100",
     'linkedin' => "",
     'extra' => 
     	[
@@ -188,11 +215,8 @@ curl_setopt_array($ch, array(
 curl_setopt($ch, CURLOPT_URL, "https://app.recruitis.io/api2/answers");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt($ch, CURLOPT_HEADER, FALSE);
-
 curl_setopt($ch, CURLOPT_POST, TRUE);
-
 curl_setopt($ch, CURLOPT_POSTFIELDS,$postdata);
-
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
   "Content-Type: application/json",
   "Authorization: Bearer 504b610c0c335c6c7da97569aab00c8c79cfb1f4.c.9150.27e8c7ab8be495619508478fc3a29f00"
@@ -212,5 +236,3 @@ else {
 }
 
 //}
-
-?>
